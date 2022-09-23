@@ -49,5 +49,8 @@ divTodoList.addEventListener('click', (evento)=>{
 
         //toggle() =Para agregar o cambiar una clase
         todoElemento.classList.toggle('completed');
+    }else if(nombreElement.includes('button')){ //Borrar todo
+        todoList.eliminarTodo(todoId);
+        divTodoList.removeChild(todoElemento); //Remover el elemento que cohincida con el li en HTML
     }
 })
