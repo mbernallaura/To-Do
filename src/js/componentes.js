@@ -32,4 +32,22 @@ txtImput.addEventListener('keyup', (evento) =>{
         crearTodoHtml(nuevoTodo);
         txtImput.value = '';
     }
+});
+
+divTodoList.addEventListener('click', (evento)=>{
+    //Saber que tipo de etiqueta es el que el usuario clickeo
+    const nombreElement = evento.target.localName; //input= check, label= nombreTarea, button= la X 
+
+    //El doble .parentElement fue porque queria obtener la etqueta li
+    const todoElemento = evento.target.parentElement.parentElement;
+
+    //Obtener el id de la variable anterior
+    const todoId = todoElemento.getAttribute('data-id');
+    
+    if(nombreElement.includes('input')){ //click en el check
+        todoList.marcarCompletado(todoId);
+
+        //toggle() =Para agregar o cambiar una clase
+        todoElemento.classList.toggle('completed');
+    }
 })
