@@ -3,6 +3,7 @@ import { todoList } from "../index";
 
 const divTodoList = document.querySelector('.todo-list');
 const txtImput = document.querySelector('.new-todo');
+const btnBorrarTodos= document.querySelector('.clear-completed');
 
 export const crearTodoHtml = (todo) =>{
     const htmlTodo = `
@@ -53,4 +54,17 @@ divTodoList.addEventListener('click', (evento)=>{
         todoList.eliminarTodo(todoId);
         divTodoList.removeChild(todoElemento); //Remover el elemento que cohincida con el li en HTML
     }
-})
+});
+
+btnBorrarTodos.addEventListener('click', ()=>{
+    todoList.eliminarCompletados();
+
+    //Para poder eliminar todos los elementos se debe hacer de atras hacia adelante,
+    //ya que si se hace de esta manera cada uno de los elementos no perderian su posicion
+    for(let i = divTodoList.children.length-1; i>=0; i--){
+        const elemento = divTodoList.children[i];
+        if(elemento.classList.contains('completed')){
+            divTodoList.removeChild(elemento);
+        }
+    }
+});
