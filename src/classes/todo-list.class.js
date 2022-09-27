@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList{
     constructor(){
         //this.todos = [];
@@ -41,5 +43,8 @@ export class TodoList{
         this.todos = (localStorage.getItem('todo')) 
                         ? JSON.parse (localStorage.getItem('todo')) 
                         : [];
+
+        //*.map()= barrer cada uno de los elementos de un arreglo y retornar un nuevo arreglo con esos objetos mutados                   
+        this.todos = this.todos.map(obj => Todo.fromJason(obj));
     }
 }
