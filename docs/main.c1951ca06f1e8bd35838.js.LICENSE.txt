@@ -1,0 +1,3 @@
+//!LocalStorage = Persiste la informacion en el navegador 
+
+//!SessionStorage= La informacion es volatil y al cerrar el navegador, se va la info
